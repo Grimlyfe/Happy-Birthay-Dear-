@@ -1,0 +1,111 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>c2 - Birthday Surprise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #007BFF;
+      font-family: 'Quicksand', sans-serif;
+      overflow-x: hidden;
+      color: white;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .main-text {
+      font-size: 60px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    .sub-text {
+      font-size: 28px;
+      opacity: 0;
+      animation: typewriter 3s steps(40, end) 2s forwards;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid white;
+    }
+
+    .photo {
+      width: 250px;
+      border-radius: 15px;
+      margin-top: 30px;
+      opacity: 0;
+      animation: fadeIn 2s 5s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; opacity: 1; }
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 60px;
+      height: 80px;
+      background-color: #ff4d6d;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: rise 6s infinite ease-in;
+      z-index: 0;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: white;
+      transform: translateX(-50%);
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-120vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main-text">HAPPY 21ST BIRTHDAY</div>
+    <div class="sub-text">To the Bestest Freind And the most AMAZING person I have met</div>
+    <img class="photo" src="s1.jpg" alt="Her Photo">
+    <a href="c3.html" style="margin-top: 40px; display: block; font-size: 20px; color: white; text-decoration: underline; opacity: 0; animation: fadeIn 2s 7s forwards;">A small piece of my mind...</a>
+  </div>
+
+  <!-- Balloons -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+      balloon.style.left = Math.random() * 100 + 'vw';
+      balloon.style.animationDelay = (Math.random() * 5) + 's';
+      balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+      document.body.appendChild(balloon);
+    }
+  </script>
+</body>
+</html>
+

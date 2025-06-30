@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>c1 - A Magical Start</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(120deg, #007BFF, #4facfe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-family: 'Quicksand', sans-serif;
+      position: relative;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: url('https://i.ibb.co/k1qXsZL/sparkle-stars.png') repeat;
+      animation: twinkle 10s linear infinite;
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    @keyframes twinkle {
+      0% { background-position: 0 0; }
+      100% { background-position: 100% 100%; }
+    }
+
+    .content {
+      text-align: center;
+      color: #fff;
+      z-index: 2;
+    }
+
+    .content h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 50px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    .content a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid #fff;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 20px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .content a:hover {
+      background: #fff;
+      color: #007BFF;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #fff, 0 0 15px #fff; }
+      to { text-shadow: 0 0 20px #ffefaa, 0 0 30px #fff; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="content">
+    <h1>A Little Surprise Awaits...</h1>
+    <a href="c2.html">Click Here to Begin</a>
+  </div>
+</body>
+</html>

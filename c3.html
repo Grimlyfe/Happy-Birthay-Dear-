@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>c3 - The Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #007BFF;
+      font-family: 'Quicksand', sans-serif;
+      color: #fff;
+      overflow-y: auto;
+    }
+
+    .letter-container {
+      position: relative;
+      top: 80px;
+      width: 90%;
+      margin: 0 auto;
+      max-width: 800px;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 2px solid #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      z-index: 2;
+      margin-bottom: 100px;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 38px;
+      text-align: center;
+      margin-bottom: 30px;
+      animation: floatIn 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes floatIn {
+      0% { transform: translateY(-30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    #letter {
+      font-style: italic;
+      white-space: pre-line;
+      font-size: 18px;
+      line-height: 1.6;
+      opacity: 0;
+    }
+
+    #signature {
+      margin-top: 30px;
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 22px;
+      opacity: 0;
+    }
+
+    .next-link {
+      display: block;
+      text-align: center;
+      font-size: 20px;
+      margin-top: 40px;
+      color: #fff;
+      text-decoration: underline;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="letter-container">
+  <h1>A Small Piece of My Mind</h1>
+  <div id="letter"></div>
+  <div id="signature">To the most amazing and special person</div>
+  <a href="c4.html" class="next-link" id="nextLink">A glimpse of what I made for you...</a>
+</div>
+
+<script>
+  const text = `You may roll your eyes at this — but I had to write it.
+
+No matter the situation or problem, I've always been able to count on you for advice. 
+
+You always know what is to be done in any difficult situation,
+Others may say you're difficult but that has never been the case as long as I've known you. 
+
+The time at college may not have been too fun for you, 
+But for me it was the best 3 years I could have asked for. So maybe the 10th std issue wasn't that bad, or else maybe I might have been somewhere else and no meeting, or talking or mangoes. Not even accounts in the old canteen, hiding from Eco miss [ Forgot her name again, sorry : ) ], and staying late during your fashion show. To me all of it was fun and unforgettable. 
+
+I may have been quiet most of the time, but I always appreciated the bond between us, maybe it all started because of the wrong person, but if there's one good thing that came out of all this, 
+Both, the school I've despised or the person who made it so, was meeting someone who knows to listen without judging, understands before advising or even helping in academics. And the best part, did not leave or ignore when things were messy. Thank you for all the support, both emotionally and academically. 
+
+And even if we don’t meet as often, let's try to talk and chat more. 
+  
+You’ve made a difference in my life, and I’m honestly thankful to know someone like you. I hope you always keep being the amazing person you are.`;
+
+  let i = 0;
+  const letterDiv = document.getElementById("letter");
+
+  function typeWriter() {
+    if (i < text.length) {
+      letterDiv.innerHTML += text.charAt(i);
+      letterDiv.style.opacity = 1;
+      i++;
+      setTimeout(typeWriter, 25);
+    } else {
+      const sig = document.getElementById("signature");
+      sig.style.opacity = 1;
+      setTimeout(() => {
+        const link = document.getElementById("nextLink");
+        link.style.opacity = 1;
+      }, 1500);
+    }
+  }
+
+  setTimeout(typeWriter, 1500);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>c4 - The Collage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #007BFF;
+      overflow: hidden;
+      font-family: 'Quicksand', sans-serif;
+      color: white;
+    }
+
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(white 1px, transparent 1px);
+      background-size: 25px 25px;
+      animation: shimmer 4s linear infinite;
+      opacity: 0.2;
+      z-index: 0;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0 0; }
+      100% { background-position: 100% 100%; }
+    }
+
+    .photo {
+      position: absolute;
+      width: 180px;
+      height: auto;
+      border: 3px solid #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.6);
+      opacity: 0;
+      transition: all 1s ease;
+    }
+
+    .caption {
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      top: 80%;
+      font-size: 20px;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .portrait {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    .message {
+      position: absolute;
+      bottom: 5%;
+      width: 100%;
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 28px;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    .next-link {
+      position: absolute;
+      bottom: 1%;
+      width: 100%;
+      text-align: center;
+      font-size: 20px;
+      color: white;
+      text-decoration: underline;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div id="caption" class="caption"></div>
+  <img id="portrait" class="portrait" src="portrait.jpg" alt="Portrait">
+  <div id="message" class="message">To the one who made all these memories so special</div>
+  <a href="c5.html" class="next-link" id="nextLink">A few words before signing off....</a>
+
+  <script>
+    const photos = [];
+    const captions = [
+      "Caption 1", "Caption 2", "Caption 3", "Caption 4", "Caption 5",
+      "Caption 6", "Caption 7", "Caption 8", "Caption 9", "Caption 10"
+    ];
+
+    for (let i = 0; i < 10; i++) {
+      const img = document.createElement('img');
+      img.src = i === 2 ? `ss${i+1}.jpeg` : `ss${i+1}.jpg`;
+      img.className = 'photo';
+      img.style.zIndex = 2;
+      document.body.appendChild(img);
+      photos.push(img);
+    }
+
+    const positions = [
+      [20, 10], [40, 10], [60, 10], [30, 20], [50, 20],
+      [20, 30], [40, 30], [60, 30], [35, 40], [45, 40]
+    ];
+
+    let i = 0;
+    function showPhoto() {
+      if (i >= photos.length) {
+        document.getElementById('caption').style.opacity = 0;
+        setTimeout(() => {
+          document.getElementById('portrait').style.opacity = 1;
+          document.getElementById('message').style.opacity = 1;
+          document.getElementById('nextLink').style.opacity = 1;
+        }, 1000);
+        return;
+      }
+
+      const img = photos[i];
+      img.style.left = '50%';
+      img.style.top = '50%';
+      img.style.transform = 'translate(-50%, -50%)';
+      img.style.opacity = 1;
+      document.getElementById('caption').textContent = captions[i];
+      document.getElementById('caption').style.opacity = 1;
+
+      setTimeout(() => {
+        const [x, y] = positions[i];
+        img.style.left = `${x}%`;
+        img.style.top = `${y}%`;
+        img.style.transform = 'translate(-50%, -50%) scale(0.5)';
+        document.getElementById('caption').style.opacity = 0;
+        i++;
+        setTimeout(showPhoto, 3000);
+      }, 3000);
+    }
+
+    setTimeout(showPhoto, 1000);
+  </script>
+</body>
+</html>
